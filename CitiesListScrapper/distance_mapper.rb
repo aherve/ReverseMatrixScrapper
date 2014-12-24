@@ -45,7 +45,7 @@ class Mapper
 
   def self.map(line)
     m = self.new(line)
-    puts m.output
+    m.output
   end
 
   def query_result
@@ -69,8 +69,4 @@ class Mapper
     end
   end
 
-end
-
-ARGF.each do |line|
-  Mapper.map(line)
 end
