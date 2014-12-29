@@ -70,3 +70,7 @@ class Mapper
   end
 
 end
+
+ARGF.each do |line|
+  puts Mapper.map(line)
+end
