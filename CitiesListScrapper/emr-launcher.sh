@@ -1,0 +1,15 @@
+elastic-mapreduce \
+  --create \
+  --name cities_scrapper \
+  --stream \
+  --args "-D,mapred.reduce.tasks=0" \
+  --enable-debugging \
+  --input s3n://woodstack/cities_scrapper/data_in \
+  --mapper s3n://woodstack/cities_scrapper/src/distance_mapper.rb \
+  --reducer cat \
+  --output s3n://woodstack/cities_scrapper/data_out \
+  --log-uri s3://woodstack/emr-logs/ \
+  --region eu-west-1 \
+  --bootstrap-action s3n://woodstack/cities_scrapper/src/bootstrap.sh \
+  --instance-type m1.small \
+  --num-instances 16

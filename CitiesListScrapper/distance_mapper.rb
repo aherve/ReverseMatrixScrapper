@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-require 'bundler'
-require 'csv'
-require 'pry'
+#require 'bundler'
+#require 'csv'
+#require 'pry'
 require 'faraday'
 require 'json'
 Bundler.setup(:default)
