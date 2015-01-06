@@ -23,7 +23,7 @@ csv_head = [
   :unknown,
   :unknown,
   :unknown,
-  :unknown,
+  :population,
   :unknown,
   :lng,
   :lat,
@@ -35,12 +35,13 @@ head = [
   :readable_name,
   :lat,
   :lng,
+  :population,
 ]
 
 # reformatting csv
-cities = CSV::read('./data/villes_france.csv').map{|a| csv_head.zip(a)}.map(&:to_h).map{|h| h.select{|k,v| head.include? k}}
+cities = CSV::read('./data_raw/villes_france.csv').map{|a| csv_head.zip(a)}.map(&:to_h).map{|h| h.select{|k,v| head.include? k}}
 
-File.open('./data/formatted_cities.csv', 'w') do |f|
+File.open('./formatted_cities.csv', 'w') do |f|
   f.puts head.join("\t")
   cities.each do |city|
     f.puts head.map{|k| city[k]}.join("\t")
